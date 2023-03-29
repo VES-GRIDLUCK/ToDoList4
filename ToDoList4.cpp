@@ -18,7 +18,7 @@ struct todo {
 void addtodo() {
     system("cls");
     cout << "\t\t\t***********************************************************************" << endl;
-    cout << "\t\t\t                       WELCOME TO Your ToDo List                       " << endl;
+    cout << "\t\t\t                        Список дел                                     " << endl;
     cout << "\t\t\t***********************************************************************" << endl << endl << endl;
     todo todo;
     cout << "\n\tEnter new task: ";
@@ -62,12 +62,12 @@ void print(todo s) {
 void readData() {
     system("cls");
     cout << "\t\t\t***********************************************************************" << endl;
-    cout << "\t\t\t                       WELCOME TO Your ToDo List                       " << endl;
+    cout << "\t\t\t                        Список дел                                     " << endl;
     cout << "\t\t\t***********************************************************************" << endl << endl << endl;
     todo todo;
     ifstream read;
     read.open("todo.txt");
-    cout << "\n\t------------------Your current Tasks in the list--------------------";
+    cout << "\n\t------------------Ваш список дел--------------------";
     // while we dont reach the end of file keep on printing the data on screen
     while (!read.eof()) {
         read >> todo.id;
@@ -82,10 +82,10 @@ void readData() {
 int searchData() {
     system("cls");
     cout << "\t\t\t***********************************************************************" << endl;
-    cout << "\t\t\t                       WELCOME TO Your ToDo List                       " << endl;
+    cout << "\t\t\t                        Список дел                                     " << endl;
     cout << "\t\t\t***********************************************************************" << endl << endl << endl;
     int id;
-    cout << "\n\tEnter task id: ";
+    cout << "\n\tВведите номер дела: ";
     cin >> id;
     todo todo;
     ifstream read;
@@ -106,10 +106,10 @@ int searchData() {
 void deleteData() {
     system("cls");
     cout << "\t\t\t***********************************************************************" << endl;
-    cout << "\t\t\t                       WELCOME TO Your ToDo List                       " << endl;
+    cout << "\t\t\t                       Список дел                                      " << endl;
     cout << "\t\t\t***********************************************************************" << endl << endl << endl;
     int id = searchData();
-    cout << "\n\tDo you want to delete this task (y/n) : ";
+    cout << "\n\tВы действительно хотите удалить дело (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -132,10 +132,10 @@ void deleteData() {
         tempFile.close();
         remove("todo.txt");
         rename("temp.txt", "todo.txt");
-        cout << "\n\tTask deleted successfuly";
+        cout << "\n\tДело успешно удалено";
     }
     else {
-        cout << "\n\tRecord not deleted";
+        cout << "\n\tЗапись не удалена";
     }
 }
 
@@ -145,15 +145,15 @@ void deleteData() {
 void updateData() {
     system("cls");
     cout << "\t\t\t***********************************************************************" << endl;
-    cout << "\t\t\t                       WELCOME TO Your ToDo List                       " << endl;
+    cout << "\t\t\t                        Список дел                                     " << endl;
     cout << "\t\t\t***********************************************************************" << endl << endl << endl;
     int id = searchData();
-    cout << "\n\tYou want to update this task (y/n) : ";
+    cout << "\n\tВы действительно хотите выполнить действие (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
         todo newData;
-        cout << "\n\tEnter todo task : ";
+        cout << "\n\tВведите содержание дела : ";
         cin.get();
         getline(cin, newData.task);
         todo todo;
@@ -179,20 +179,21 @@ void updateData() {
         tempFile.close();
         remove("todo.txt");
         rename("temp.txt", "todo.txt");
-        cout << "\n\tTask updated successfuly";
+        cout << "\n\tДело успешно обновленно";
     }
     else {
-        cout << "\n\tRecord not deleted";
+        cout << "\n\tЗапись не ударена";
     }
 }
 int main()
 {
+    setlocale(0,"");
     system("cls");
     system("Color E0"); // "Color XY", X - backgroung color, Y - text color
     system("title todoapp @copyassignment");
     cout << "\t\t\t***********************************************************************" << endl;
     cout << "\t\t\t*                                                                     *" << endl;
-    cout << "\t\t\t*                      WELCOME TO Your ToDo List                      *" << endl;
+    cout << "\t\t\t*                      Список дел                                     *" << endl;
     cout << "\t\t\t*                                                                     *" << endl;
     cout << "\t\t\t***********************************************************************" << endl << endl << endl << endl;
     ifstream read;
@@ -207,14 +208,14 @@ int main()
 
     while (true) {
         cout << endl << endl;
-        cout << "\n\t1.Add student data";
-        cout << "\n\t2.See student data";
-        cout << "\n\t3.Search student data";
-        cout << "\n\t4.Delete student data";
-        cout << "\n\t5.Update student data";
+        cout << "\n\t1.Добавить дело";
+        cout << "\n\t2.Просмотр дел";
+        cout << "\n\t3.Поиск дела";
+        cout << "\n\t4.удаление дела";
+        cout << "\n\t5.Изменение данных";
 
         int choice;
-        cout << "\n\tEnter choice : ";
+        cout << "\n\tВыберите действие : ";
         cin >> choice;
         switch (choice) {
         case 1:
